@@ -82,6 +82,15 @@
         .tableauPlaceholder:hover {
             background-color: rgba(255, 255, 255, 0.3); /* Light background on hover */
         }
+		        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1.5cm; /* Height of the overlay */
+            background-color: transparent; /* Make it transparent */
+            z-index: 2; /* Make sure it sits on top */
+        }
     </style>
 </head>
 <body>
@@ -124,6 +133,7 @@
                     <param name='display_count' value='yes' />
                     <param name='language' value='en-US' />
                 </object>
+				<div class="overlay"></div> <!-- Overlay div -->
             </div>
         </div>
 
@@ -148,6 +158,7 @@
 					<param name='display_count' value='yes' />
 					<param name='language' value='en-US' />
 				</object>
+				<div class="overlay"></div> <!-- Overlay div -->
 			</div>
 
         <script type='text/javascript'>
