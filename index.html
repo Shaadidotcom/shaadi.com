@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Dashboard with Tabs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9375cb; /* Dark purple background */
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            text-align: center;
+            position: relative;
+            padding-top: 10px; /* Reduced top padding */
+        }
+        /* Header section for logos and tabs */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px; /* Reduced margin */
+            padding: 0 50px; /* Adjust padding to space out logos */
+        }
+        /* Logo styling */
+        .logo {
+            width: 140px; /* Increased logo size */
+            height: auto;
+            background-color: white; /* White background for logos */
+            border: 2px solid yellow; /* Yellow border */
+            border-radius: 10px; /* Rounded corners */
+            padding: 10px; /* Increased padding around logos */
+            transition: transform 0.3s; /* Smooth scaling on hover */
+        }
+        .logo:hover {
+            transform: scale(1.05); /* Slightly enlarge logo on hover */
+        }
+        /* Tabs styling */
+        .tabs-container {
+            position: absolute;
+            top: 30px; /* Moved tabs a little higher */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: white;
+            color: #ec345f;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+        }
+        .tab.active {
+            background-color: #ec345f;
+            color: white;
+        }
+        .tab:hover {
+            background-color: #f0c419; /* Light yellow on hover */
+            color: #ec345f; /* Darker text on hover */
+        }
+        /* Report container styling */
+        .report-container {
+            display: none;
+            transition: background-color 0.3s; /* Transition effect for report background */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners for reports */
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+			margin-top: 1cm; /* Reduced margin-top to move reports higher */
+        }
+        .report-container.active {
+            display: block;
+        }
+        .tableauPlaceholder {
+            transition: background-color 0.3s; /* Transition effect for Tableau report */
+        }
+        .tableauPlaceholder:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Light background on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <div class="header-section">
+            <!-- Left logo -->
+            <img src="Shaadi_Logo.png" alt="Shaadi Logo Left" class="logo logo-left">
+            
+            <!-- Tabs in the center -->
+            <div class="tabs-container">
+                <div class="tab active" onclick="openReport(event, 'report1')">Weekly & Daily L1 Report</div>
+                <div class="tab" onclick="openReport(event, 'report2')">Monthly & Team Wise L1 Report</div>
+            </div>
+            
+            <!-- Right logo -->
+            <img src="Shaadi_Logo.png" alt="Shaadi Logo Right" class="logo logo-right">
+        </div>
+
+        <!-- First Tableau Report (Report 1) -->
+        <div class="report-container active" id="report1">
+            <div class='tableauPlaceholder' id='viz1726815365629' style='position: relative'>
+                <noscript>
+                    <a href='#'>
+                        <img alt='L1' src='https://public.tableau.com/static/images/L1/L1DailyWeeklyReport/L1/1_rss.png' style='border: none' />
+                    </a>
+                </noscript>
+                <object class='tableauViz' style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='L1DailyWeeklyReport/L1' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='https://public.tableau.com/static/images/L1/L1DailyWeeklyReport/L1/1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                </object>
+            </div>
+        </div>
+
+        <!-- Second Tableau Report (Report 2) -->
+		<div class="report-container active" id="report2">	
+			<div class='tableauPlaceholder' id='viz1726816834554' style='position: relative'>
+				<noscript>
+					<a href='#'>
+						<img alt='L1' src='https://public.tableau.com/static/images/5F/5F4CHW434/1_rss.png' style='border: none' />
+					</a>
+				</noscript>
+				<object class='tableauViz' style='display:none;'>
+					<param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+					<param name='embed_code_version' value='3' />
+					<param name='path' value='shared/5F4CHW434' />
+					<param name='toolbar' value='yes' />
+					<param name='static_image' value='https://public.tableau.com/static/images/5F/5F4CHW434/1.png' />
+					<param name='animate_transition' value='yes' />
+					<param name='display_static_image' value='yes' />
+					<param name='display_spinner' value='yes' />
+					<param name='display_overlay' value='yes' />
+					<param name='display_count' value='yes' />
+					<param name='language' value='en-US' />
+				</object>
+			</div>
+
+        <script type='text/javascript'>
+            var divElement1 = document.getElementById('viz1726815365629');
+            var vizElement1 = divElement1.getElementsByTagName('object')[0];
+            vizElement1.style.width='100%';
+            vizElement1.style.height=(divElement1.offsetWidth*0.75)+'px';
+            var scriptElement1 = document.createElement('script');
+            scriptElement1.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement1.parentNode.insertBefore(scriptElement1, vizElement1);
+
+            var divElement = document.getElementById('viz1726816834554');   
+            var vizElement = divElement.getElementsByTagName('object')[0];                    
+            vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    
+            var scriptElement = document.createElement('script');                    
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);  
+
+            // Function to toggle reports
+            function openReport(event, reportId) {
+                // Hide all reports
+                var reports = document.querySelectorAll('.report-container');
+                reports.forEach(function(report) {
+                    report.classList.remove('active');
+                });
+
+                // Show the selected report
+                document.getElementById(reportId).classList.add('active');
+
+                // Toggle active class for tabs
+                var tabs = document.querySelectorAll('.tab');
+                tabs.forEach(function(tab) {
+                    tab.classList.remove('active');
+                });
+                event.target.classList.add('active');
+            }
+        </script>
+    </div>
+
+</body>
+</html>
