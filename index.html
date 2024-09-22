@@ -2,97 +2,152 @@
 <html lang="en">
 <head>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #9375cb; /* Dark purple background */
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-        .dashboard-container {
-            text-align: center;
-            position: relative;
-            padding-top: 5px; /* Reduced top padding */
-        }
-        /* Header section for logos and tabs */
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 5px; /* Reduced margin */
-            padding: 5px 40px; /* Adjust padding to space out logos */
-            border: 3px solid #FFB400; /* Thin border with RGB color (red as an example) */
-            border-radius: 9px; /* Optional: Rounded corners */
-        }
-        /* Logo styling */
-        .logo {
-            width: 140px; /* Increased logo size */
-            height: auto;
-            background-color: white; /* White background for logos */
-            border: 2px solid #FFB400; /* Yellow border */
-            border-radius: 10px; /* Rounded corners */
-            padding: 5px; /* Increased padding around logos */
-            transition: transform 0.3s; /* Smooth scaling on hover */
-        }
-        .logo:hover {
-            transform: scale(1.05); /* Slightly enlarge logo on hover */
-        }
-        /* Tabs styling */
-        .tabs-container {
-            position: absolute;
-            top: 25px; /* Moved tabs a little higher */
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        .tab {
-            padding: 8px 16px;
-            background-color: white;
-            border: 2px solid #FFB400; /* Yellow border */
-            color: #ff5a60;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
-        }
-        .tab.active {
-            background-color: #83e1ed;
-            border: 2px solid #FFB400; /* Yellow border */
-            color: #ff5a60;
-        }
-        .tab:hover {
-            background-color: #83e1ed; /* Light yellow on hover */
-            border: 2px solid #FFB400; /* Yellow border */
-            color: #ec345f; /* Darker text on hover */
-        }
-        /* Report container styling */
-        .report-container {
-            display: none;
-            transition: background-color 0.3s; /* Transition effect for report background */
-            padding: 15px;
-            border-radius: 20px; /* Rounded corners for reports */
-            background-color: rgb(255, 114, 117); /* Slightly transparent white */
-            margin-top: 0.5cm; /* Reduced margin-top to move reports higher (used to reduce logo and report distance)*/ 
-        }
-        .report-container.active {
-            display: block;
-        }
-        .tableauPlaceholder {
-            transition: background-color 0.3s; /* Transition effect for Tableau report */
-        }
-        .tableauPlaceholder:hover {
-            background-color: rgb(255, 114, 117); /* Light background on hover */
-        }
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1.5cm; /* Height of the overlay */
-            background-color: transparent; /* Make it transparent */
-            z-index: 2; /* Make sure it sits on top */
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #6a1b9a, #9375cb);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    text-align: center;
+    position: relative;
+    padding-top: 5px;
+    min-height: 100vh; /* Ensure it fills the viewport height */
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px 40px;
+    border: 3px solid #FFB400;
+    border-radius: 9px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    width: 140px;
+    height: auto;
+    background-color: white;
+    border: 2px solid #FFB400;
+    border-radius: 10px;
+    padding: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.tabs-container {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    padding: 8px 16px;
+    background-color: white;
+    border: 2px solid #FFB400;
+    color: #ff5a60;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.tab.active {
+    background-color: #83e1ed;
+    color: #ff5a60;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.tab:hover {
+    background-color: #83e1ed;
+    color: #ec345f;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+}
+
+.report-container {
+    display: none;
+    transition: opacity 0.5s ease;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: rgba(255, 114, 117, 0.9);
+    margin-top: 0.5cm;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.report-container.active {
+    display: block;
+    opacity: 1;
+}
+
+.tableauPlaceholder {
+    transition: background-color 0.3s;
+}
+
+.tableauPlaceholder:hover {
+    background-color: rgba(255, 114, 117, 0.8);
+}
+
+/* Stars background effect */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Example star positions */
+.star:nth-child(1) { top: 20%; left: 15%; width: 3px; height: 3px; }
+.star:nth-child(2) { top: 40%; left: 50%; width: 2px; height: 2px; }
+.star:nth-child(3) { top: 70%; left: 30%; width: 4px; height: 4px; }
+.star:nth-child(4) { top: 80%; left: 80%; width: 2px; height: 2px; }
+.star:nth-child(5) { top: 10%; left: 70%; width: 3px; height: 3px; }
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.5cm;
+    background-color: transparent;
+    z-index: 2;
+}
+
+
     </style>
 </head>
 <body>
