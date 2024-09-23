@@ -162,6 +162,7 @@ body {
                 <div class="tab active" onclick="openReport(event, 'report1')">L1 + Teams Monthly Report</div>
                 <div class="tab" onclick="openReport(event, 'report2')">L1 Weekly Report</div>
                 <div class="tab" onclick="openReport(event, 'report3')">L1 Daily Report</div>
+                <div class="tab" onclick="openReport(event, 'report4')">Team-Wise Report</div>
             </div>
             
             <!-- Right logo -->
@@ -247,6 +248,34 @@ body {
                     <div class="overlay"></div> <!-- Overlay div -->
                 </div>
             </div>
+            <!-- Third Tableau Report (Report 4) -->
+            <div class="report-container active" id="report4">	
+                <div class='tableauPlaceholder' id='viz1727072400047' style='position: relative'>
+                    <noscript>
+                        <a href='#'>
+                            <img alt='L1' src='https://public.tableau.com/static/images/Te/Teamsmonthlyreport/L1/1_rss.png' style='border: none' />
+                        </a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='Teamsmonthlyreport/L1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Te/Teamsmonthlyreport/L1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                        <param name='filter' value='publish=yes' />
+                    </object>
+                    <div class="overlay"></div> <!-- Overlay div -->
+                </div>
+            </div>
+            
 
         <script type='text/javascript'>
             var divElement = document.getElementById('viz1726816834554');   
@@ -266,6 +295,14 @@ body {
             vizElement.parentNode.insertBefore(scriptElement, vizElement);
 
             var divElement = document.getElementById('viz1726991969129');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '100%';
+            vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+            var divElement = document.getElementById('viz1727072400047');
             var vizElement = divElement.getElementsByTagName('object')[0];
             vizElement.style.width = '100%';
             vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
